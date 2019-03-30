@@ -1,13 +1,16 @@
 ## TEAM Lyrebird 
-# Mayjor_Project Project 1: Blood Test Diary
+# Major Project Project 1: Blood Test Diary
+This is the major project for software engineering at King's College London developed by Teaam Lyrebird
 
 
-### Commit Commenting
-Start with a Verb, and no longer than 40 characters
-i.e Add xxxxxx
-
-### Branching
-Don't name branches with your name
+### Contributors
+Bonian Hu 
+Zhenjie (Jeff) Jiang
+Yilei (Oscar) Liang 
+Tao Lin
+Swapnil Paul
+Yeshvanth Prabakar 
+Patrick Whyte
 
 ### Technology Stack
 - Spring Boot
