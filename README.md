@@ -21,7 +21,7 @@ This is the major project for software engineering at King's College London deve
 - JAVA
 
 ### Extra stuff required
-- A outlook email (Config at application.properties)
+- An outlook email & secure key(Config at application.properties)
 - Google Map API key (Config at hospitals.html)
 ### How to Setup the Project 
  
