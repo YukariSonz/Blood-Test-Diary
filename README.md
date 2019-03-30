@@ -4,13 +4,13 @@ This is the major project for software engineering at King's College London deve
 
 
 ### Contributors
-Bonian Hu 
-Zhenjie (Jeff) Jiang
-Yilei (Oscar) Liang 
-Tao Lin
-Swapnil Paul
-Yeshvanth Prabakar 
-Patrick Whyte
+- Bonian Hu 
+- Zhenjie (Jeff) Jiang
+- Yilei (Oscar) Liang 
+- Tao Lin
+- Swapnil Paul
+- Yeshvanth Prabakar 
+- Patrick Whyte
 
 ### Technology Stack
 - Spring Boot
