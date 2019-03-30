@@ -12,14 +12,14 @@
             "name": "CodeLens (Launch) - Application",
             "request": "launch",
             "mainClass": "com.blood.Application",
-            "projectName": "Legou"
+            "projectName": "Lyrebird"
         },
         {
             "type": "java",
             "name": "CodeLens (Launch) - DemoApplication",
             "request": "launch",
             "mainClass": "com.blood.DemoApplication",
-            "projectName": "Legou"
+            "projectName": "Lyrebird"
         }
     ]
 }
