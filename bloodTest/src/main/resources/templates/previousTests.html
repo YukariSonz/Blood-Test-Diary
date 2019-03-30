@@ -1,0 +1,118 @@
+<!-- Previous test page for previous tests of patients -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"
+        integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Blood Test Diary</title>
+</head>
+
+<body>
+
+    <div th:replace="component/navbar.html"></div>
+    <div th:replace="component/mnav.html"></div>
+
+    <!-- SEARCH BAR -->
+    <section class="section section-login light-blue lighten-5 center">
+        <div class="row">
+            <div class="container">
+                <div id="view-search-bar" class="active" style="display: block;">
+                    <div class="row">
+                        <div class="col s11">
+                            <nav class="blue lighten-2">
+                                <div class="nav-wrapper">
+                                    <div class="input-field">
+                                        <input placeholder="Search By Patient" id="name"
+                                            onkeyup="searchPreviousTestFunction()" type="search">
+                                        <label class="label-icon" for="search-example">
+                                            <i class="material-icons">search</i>
+                                        </label>
+                                        <i class="material-icons">close</i>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- TEST TESCHDULE TABLE -->
+            <div class="col s12">
+                <div class="card blue lighten-3">
+                    <table id="previousTestTable" class="highlight">
+                        <thead>
+                            <tr>
+                                <th>NAME & SURNAME</th>
+                                <th>PREVIOUS TEST DATE</th>
+                                <th>TEST LOCATION</th>
+                                <th>COMMENT</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr th:each="testSchedule:${previousTests}">
+                                <td>
+                                    <!-- Modal Trigger for pop-up on click-->
+                                    <a th:attr="href='#modal' + ${testSchedule.id}"
+                                        class="waves-effect waves-light btn modal-trigger"> <span
+                                            th:text="${testSchedule.patient.forename} +' ' +${testSchedule.patient.surname}"></span></a>
+                                    <div th:attr="id = 'modal' + ${testSchedule.id}" class="modal modal-fixed-footer">
+                                        <div class="modal-content">
+
+                                            <blockquote>
+                                                <h4
+                                                    th:text="${testSchedule.patient.forename} + ' ' + ${testSchedule.patient.surname}">
+                                                </h4>
+                                            </blockquote>
+
+                                            <div class="row">
+                                                <div class="col s8 place mt-4 p-0">
+                                                    <div class="col s8"><i class="material-icons"> place </i> <span
+                                                            th:text="${testSchedule.patient.address}"></span></div>
+                                                </div>
+                                                <br />
+                                                <br />
+                                                <div class="col s8 phone mt-4 p-0">
+                                                    <div class="col s8"><i class="material-icons"> call
+                                                        </i>&nbsp;<span th:text="${testSchedule.patient.phone}"></span>
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <br />
+                                                <div class="col s8 mail mt-4 p-0">
+                                                    <div class="col s8"><i class="material-icons"> mail_outline </i>
+                                                        &nbsp;<span th:text="${testSchedule.patient.email}"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!"
+                                                class="modal-action modal-close waves-effect waves-green btn-flat ">OK</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td th:text="${testSchedule.date}"></td>
+                                <td th:text="${testSchedule.location}"></td>
+                                <td th:text="${testSchedule.commet}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    </section>
+    <div th:replace="component/footer.html"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script th:src="@{/js/home.js}"> </script>
+    <script th:src="@{/js/nav.js}"> </script>
+</body>
+
+</html>

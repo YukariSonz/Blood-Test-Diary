@@ -1,0 +1,37 @@
+[type="checkbox"].filled-in.tabbed:checked:focus + label:after {
+    border-radius: 2px;
+    background-color: #ff6f00;
+    border-color: #e65100;
+}
+
+[type="checkbox"].filled-in:checked + label:after {
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ff6f00;
+    background-color:  #e65100;
+    z-index: 0;
+}
+
+/* Map inside tab */
+#map_1 {
+    height: 438px;
+    width: 100%;
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+/* Map outside tab */
+#map_2 {
+    height: 438px;
+    width: 80%;
+  margin-left: 10%;
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.section {
+  margin-top: 50px;
+  background: lightblue;
+}
+

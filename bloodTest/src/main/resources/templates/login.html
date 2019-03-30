@@ -1,0 +1,144 @@
+<!-- Main Login Page for clinicians-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"
+    integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+    crossorigin="anonymous"></script>
+  <title>Blood Test Diary</title>
+</head>
+
+<body id="home" class="scrollspy">
+<!--nav bar-->
+  <div class="navbar-fixed">
+    <nav class="blue">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a><b>
+              <font size="6" face="helvetica" color="white">NHS</font>
+            </b></a>
+          <a href="#" data-target="mobile-nav" class="sidenav-trigger">
+            <i class="material-icons">menu</i>
+          </a>
+          <ul class="right hide-on-med-and-down">
+            <li>
+              <a href="#home">Home</a>
+            </li>
+            <li>
+              <a href="#login">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <ul class="sidenav" id="mobile-nav">
+    <li>
+      <a href="#home">Home</a>
+    </li>
+    <li>
+      <a href="#login">Login</a>
+    </li>
+  </ul>
+
+  <!-- Sliding images -->
+  <section class="slider">
+    <ul class="slides">
+      <li>
+        <img th:src="@{images/test1.jpg}" />
+        <div class="caption center-align">
+        </div>
+      </li>
+      <li>
+        <img th:src="@{images/test2.jpg}" />
+        <div class="caption left-align">
+        </div>
+      </li>
+      <li>
+        <img th:src="@{images/test3.jpg}" />
+        <div class="caption right-align">
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Login Section -->
+  <section id="login" class="section section-login grey lighten-4 center scrollspy">
+    <div class="container">
+      <div class="card">
+        <div class="col s6 offset-s6">
+          <div class="card">
+            <div class="card-action blue lighten-1 white-text">
+              <h3>Login</h3>
+            </div>
+            <div class="card-content">
+              <form th:action="@{/login}" method="post">
+                <div class="form field">
+                  <label for="username">Username<input type="text" name="username" /></label>
+                </div><br>
+                <div class="form field">
+                  <label for="password">Password <input type="password" name="password" /> </label>
+                </div><br>
+                <div class="form-field">
+                  <div><input class="btn-large waves effect waves-dark blue" type="submit" value="Login" /> </div>
+                </div><br>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Request Access By Any User 
+  <section id="Request" class="section section-Request scrollspy">
+    <div class="container">
+      <div class="row">
+        <div class="card-panel grey lighten-3">
+          <h5>Request Login Access</h5>
+          <div class="input-field">
+            <input type="text" placeholder="Name">
+          </div>
+          <div class="input-field">
+            <input type="text" placeholder="Email">
+          </div>
+          <div class="input-field">
+            <input type="text" placeholder="Phone">
+          </div>
+          <div class="input-field">
+            <textarea class="materialize-textarea" placeholder="Occupation"></textarea>
+          </div>
+          <input type="submit" value="Submit" class="btn blue">
+        </div>
+  </section>-->
+
+  <div th:replace="component/footer.html"></div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <!-- JQuery for Sliding Images -->
+  <script>
+    const sideNav = document.querySelector('.sidenav');
+    M.Sidenav.init(sideNav, {});
+    const slider = document.querySelector('.slider');
+    M.Slider.init(slider, {
+      indicators: false,
+      height: 600,
+      transition: 400,
+      interval: 5000
+    });
+    const mb = document.querySelectorAll('.materialboxed');
+    M.Materialbox.init(mb, {});
+    const ss = document.querySelectorAll('.scrollspy');
+    M.ScrollSpy.init(ss, {});
+  </script>
+</body>
+
+</html>

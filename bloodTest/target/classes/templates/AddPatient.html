@@ -1,0 +1,151 @@
+<!-- Template Page for Adding Patients -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"
+    integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous">
+  </script>
+  <title>Blood Test Diary</title>
+</head>
+
+<body>
+  <div th:replace="component/navbar.html"></div>
+
+  <div th:replace="component/mnav.html"></div>
+
+  <!-- AddPatient Form -->
+  <section class="section section-login grey lighten-3 center">
+    <div class="row">
+      <div class="col s10 push-s1">
+        <div class="row">
+          <div class="col s12 s7">
+            <div class="card">
+              <div class="card-image">
+                <img th:src="@{images/pen.jpg}" />
+                <span class="card-title">Fill In Patient Info</span>
+              </div>
+              <div class="card-content">
+                <div class="row">
+                  <form th:action="@{/addPatient}" th:object="${patient}" method="POST" class="col s12">
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <input id="forename" type="text" th:field="*{forename}" placeholder="forename" class="validate">
+                        <label for="forename">First Name</label>
+                      </div>
+                      <div class="input-field col s6">
+                        <input id="surname" th:field="*{surname}" placeholder="surname" type="text" class="validate">
+                        <label for="surname">Last Name</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col s6">
+
+                        <label for="sex">Gender</label>
+                        <select id="sex" th:field="*{sex}" class="browser-default">
+                          <option value="M">Male</option>
+                          <option value="F">Female</option>
+                          <option value="O">Other</option>
+                        </select>
+                      </div>
+                      <div class="input-field col s6">
+                        <input id="date_of_birth" th:field="*{DOB}" type="date" class="validate"
+                          placeholder="Date of Birth">
+                        <label for="date_of_birth">Date of Birth</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="address" type="text" th:field="*{address}" placeholder="address" class="validate">
+                        <label for="address">Address</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="Diagnosis" type="text" th:field="*{diagnosis}" placeholder="diagnosis"
+                          class="validate">
+                        <label for="Diagnosis">Diagnosis</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="Surgery" th:field="*{surgery}" type="text" class="validate">
+                        <label for="Surgery">Surgery</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="transplant" type="text" th:field="*{transplant}" placeholder="transplant"
+                          class="validate">
+                        <label for="transplant">Transplant</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="local_hospital" th:field="*{local_hospital}" placeholder="Local Hospital" type="text"
+                          transplant class="validate">
+                        <label for="local_hospital">Local Hospital</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="email" th:field="*{email}" type="email" class="validate" placeholder="Email">
+                        <label for="email">Email</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="phone" th:field="*{phone}" type="tel" class="validate" placeholder="Phone Number">
+                        <label for="phone">Phone Number</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="Comments" type="text" th:field="*{comments}" placeholder="comments" class="validate">
+                        <label for="Comments">Comments</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <button type="submit" style="font-weight: bold; font-size:15px"
+                        class="btn-medium waves-light btn blue lighten-2 waves-effect">Submit </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <div th:replace="component/footer.html"></div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script th:src="@{/js/nav.js}"> </script>
+  <script>
+    const sideNav = document.querySelector('.sidenav');
+    M.Sidenav.init(sideNav, {});
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $('select').formSelect();
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $('.datepicker').datepicker();
+    });
+  </script>
+
+
+
+</body>
+
+</html>

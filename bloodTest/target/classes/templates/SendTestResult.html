@@ -1,0 +1,172 @@
+<!-- Template Page for Sending test results to Patients -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"
+    integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+    crossorigin="anonymous"></script>
+  <title>Blood Test Diary</title>
+</head>
+
+<body>
+  <div th:replace="component/navbar.html"></div>
+
+  <div th:replace="component/mnav.html"></div>
+
+
+  <section class="section section-login grey lighten-3 center">
+    <div class="row">
+      <div class="col s10 push-s1">
+
+
+        <div class="row">
+          <div class="col s12 s7">
+            <div class="card">
+              <div class="card-image">
+                <img th:src="@{/images/pen.jpg}" />
+                <h2 class="card-title">Send Test Result</h2>
+              </div>
+              <div class="card-content">
+
+
+                <div class="row">
+                  <form th:action="@{/sendTestResult}" method="POST" enctype="multipart/form-data" class="col s12">
+
+                    <div class="row">
+                      <div class="row">
+                        <div class="input-field col s4">
+                          <input id="patientId" type="text" th:field="${patient.id}" placeholder="patient Id" readonly>
+                          <label for="patientid">Patient_id</label>
+                        </div>
+                      </div>
+                      <ul>
+                        <h5>
+                          <li align='left'>Email to: <span th:text="${patient.forename}"></span> <span
+                              th:text="${patient.surname}"></span></li>
+                        </h5>
+                        <h5>
+                          <li align='left'>Email Address: <span th:text="${patient.email}"></span></li>
+                        </h5>
+                        <h5>
+                          <li align='left'>Test Date: <span th:text="${test.date}"></span></li>
+                        </h5>
+                        <li>
+
+                          <div class="file-field input-field">
+                            <div class="btn">
+                              <span>Upload Report</span>
+                              <input type="file" name="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                              <input class="file-path validate" type="text">
+                            </div>
+                          </div>
+                        </li>
+
+                        <!--
+                      <h5 align="left">Send Emails:</h5>
+                      <li>
+                        <div class="row">
+                          <div class="col s12 m4">
+                            <label>
+                              <input type="checkbox" class="filled-in" checked="checked" />
+                              <span style="color: black;">Personal Email</span>
+                            </label>
+                          </div>
+                          <div class="col s12 m4">
+                            <label>
+                              <input type="checkbox" class="filled-in" checked="checked" />
+                              <span style="color: black;">Personal GP</span>
+                            </label>
+                          </div>
+                        </div>
+                        <div class="input-field col s12">
+                          <input id="email" type="email" class="validate">
+                          <label for="email" style="color: black;">Other Email</label>
+                        </div>
+                      </li>
+                     -->
+
+                        <h5 align="left">Comments:</h5>
+                        <li>
+                          <div class="row">
+                            <div class="input-field col s6">
+                              <i class="material-icons prefix">mode_edit</i>
+                              <textarea id="icon_prefix2"  name="comments" class="materialize-textarea"></textarea>
+                              <label for="icon_prefix2" style="color: black;">Add any comment</label>
+                            </div>
+                          </div>
+                        </li>
+
+                      </ul>
+                    </div>
+
+
+                    <span th:text="${patient.id}" style=" visibility: hidden;"></span>
+                    <span th:text="${test.id}" style=" visibility: hidden;"></span>
+                    <input type="submit" value="Send Result" class=" waves-light btn blue waves-effect">
+                  </form>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+  </section>
+
+
+
+  <!-- Footer -->
+  <footer class="section blue darken-2 white-text center">
+    <section class="section section-follow blue darken-2 white-text center">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <h4>Follow NHS</h4>
+            <a href="https://www.facebook.com/NHS24/" class="white-text">
+              <i class="fab fa-facebook fa-4x"></i>
+            </a>
+            <a href="https://twitter.com/NHSEngland?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+              class="white-text">
+              <i class="fab fa-twitter fa-4x"></i>
+            </a>
+            <a href="https://www.instagram.com/nhsenglandldn/?hl=en" class="white-text">
+              <i class="fab fa-instagram fa-4x"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script th:src="@{/js/nav.js}"> </script>
+  <script>
+    const sideNav = document.querySelector('.sidenav');
+    M.Sidenav.init(sideNav, {});
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $('select').formSelect();
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $('.datepicker').datepicker();
+    });
+  </script>
+</body>
+
+</html>

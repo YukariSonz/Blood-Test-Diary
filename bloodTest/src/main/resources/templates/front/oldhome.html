@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Mobile SideNav Icon DropDown -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+  <title>Blood Test Diary</title>
+</head>
+
+<body>
+  <!-- Menu Bar -->
+  <div th:replace="component/navbar.html" ></div>
+
+  <ul class="sidenav" id="mobile-nav">
+    <li>
+      <a href="#home">Home</a>
+    </li>
+    <li>
+      <a href="#login">Search</a>
+    </li>
+    <li>
+      <a href="#login">Add Patient</a>
+    </li>
+    <li>
+      <a href="#Request">Send Email</a>
+    </li>
+  </ul>
+
+  <!-- Patient Table -->
+<section class="section section-login light-blue lighten-5 center">
+  <div class="row">
+    <div class="col s12">
+ <div class="card blue lighten-3">
+  <table class="highlight">
+       <thead>
+         <tr>
+             <th>Name</th>
+             <th>Date of Blood Exam</th>
+             <th>Completed</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr>
+           <td>Alvin</td>
+           <td>12-12-2018</td>
+           <td>Yes</td>
+         </tr>
+         <tr>
+           <td>Alan</td>
+           <td>12-12-2018</td>
+           <td>Yes</td>
+         </tr>
+         <tr>
+           <td>Jonathan</td>
+           <td>12-12-2018</td>
+           <td>Yes</td>
+         </tr>
+         <tr>
+           <td>Jonathan</td>
+           <td>12-12-2018</td>
+           <td>Yes</td>
+         </tr>
+         <tr>
+           <td>Jonathan</td>
+           <td>12-12-2018</td>
+           <td>Yes</td>
+         </tr>
+         <tr>
+           <td>Jonathan</td>
+           <td>12-12-2018</td>
+           <td>Yes</td>
+         </tr>
+         <tr>
+           <td>Jonathan</td>
+           <td>12-12-2018</td>
+           <td>Yes</td>
+         </tr>
+         <tr>
+           <td>Jonathan</td>
+           <td>12-12-2018</td>
+           <td>Yes</td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+ </div>
+</div>
+</section>
+
+
+
+  <!-- Footer -->
+  <footer class="section blue darken-2 white-text center">
+    <section class="section section-follow blue darken-2 white-text center">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <h4>Follow NHS</h4>
+            <a href="https://www.facebook.com/NHS24/" class="white-text">
+              <i class="fab fa-facebook fa-4x"></i>
+            </a>
+            <a href="https://twitter.com/NHSEngland?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="white-text">
+              <i class="fab fa-twitter fa-4x"></i>
+            </a>
+            <a href="https://www.instagram.com/nhsenglandldn/?hl=en" class="white-text">
+              <i class="fab fa-instagram fa-4x"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+  <script>
+  const sideNav = document.querySelector('.sidenav');
+  M.Sidenav.init(sideNav, {});
+  </script>
+
+</body>
+
+</html>

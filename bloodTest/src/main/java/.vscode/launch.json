@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - a",
+            "request": "launch",
+            "mainClass": "a"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - BankerPlan",
+            "request": "launch",
+            "mainClass": "BankerPlan"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "Solution",
+            "args": ""
+        }
+    ]
+}

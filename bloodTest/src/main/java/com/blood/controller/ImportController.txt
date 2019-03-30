@@ -1,0 +1,78 @@
+package com.blood.controller;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.blood.service.ImportService;
+
+/**
+ * This class provides HTTP Response for Spreadsheet Import
+ * 
+ * @author Yilei Liang
+ * 
+ */
+
+@Controller
+public class ImportController<StandardMultipartFile>{
+
+    @Autowired
+    private ImportService importService;
+
+    /**
+     * Get the webpage
+     * @param model
+     * @return url of current page
+     */
+    @GetMapping("/uploadSpreadSheet")
+    public String getSpreads(Model model){
+        return "uploadSpreadSheet";
+    }
+
+    /**
+     * Convert MultipartFile into File
+     * @param file -- file to convert
+     * @return convFile -- convered file
+     */
+    public File convert(MultipartFile file) throws IOException {
+        File convFile = new File(file.getOriginalFilename());
+        convFile.createNewFile();
+        FileOutputStream fos = new FileOutputStream(convFile);
+        fos.write(file.getBytes());
+        fos.close();
+        return convFile;
+    }
+
+    /**
+     * Load the spreadsheet to Database
+     * @param file -- The spreadsheet file
+     * @return redirection to current page if any errors, else to home page
+     */
+    @RequestMapping(value = "/uploadSpreadSheet", method = RequestMethod.POST)
+    public String editLabel(@RequestParam(value = "file", required = false ) MultipartFile file,
+    BindingResult bindingResult, Model model){
+        try{
+            File fl = convert(file);
+            importService.load(fl.getAbsolutePath()); //Load the spreadsheet to DB
+        } catch (Exception e){
+            return "redirect:/uploadSpreadSheet";
+        }
+        return "redirct:/home";
+    } 
+}

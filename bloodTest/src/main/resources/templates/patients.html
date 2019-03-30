@@ -1,0 +1,127 @@
+  <!-- Patients page for list of patients -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"
+    integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+    crossorigin="anonymous"></script>
+  <title>Blood Test Diary</title>
+</head>
+
+<body>
+  <div th:replace="component/navbar.html"></div>
+  <div th:replace="component/mnav.html"></div>
+
+  <!-- Patient Table -->
+  <section class="section section-login light-blue lighten-5 center">
+    <!-- SEARCH BAR -->
+    <div class="row">
+      <div class="container">
+        <div id="view-search-bar" class="active" style="display: block;">
+          <div class="row">
+            <div class="col s1 left-align"><a href="/AddPatient" class="btn btn-floating"><i class="material-icons">add</i> </a></div>
+            <div class="col s11">
+              <nav class="blue lighten-2">
+                <div class="nav-wrapper">
+                  <div class="input-field">
+                    <input placeholder="Search By patient name" id="name" onkeyup="searchPatientFunction()"
+                      type="search">
+                    <label class="label-icon" for="search-example">
+                      <i class="material-icons">search</i>
+                    </label>
+                    <i class="material-icons">close</i>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <div class="card blue lighten-3">
+            <table id="patientTable" class="highlight">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Add Patient Test</th>
+                  <th>Name & Surname</th>
+                  <th>Gender</th>
+                  <th>Date Of Birth</th>
+                  <th>LocalHospital</th>
+                  <th>Diagnosis</th>
+                  <th>Transplant</th>
+                  <th>Surgery</th>
+                  <th>Comments</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="patient:${patients}">
+                  <td><a href="/editPatient" th:href="@{editPatient/{id}(id=${patient.id})}" class="btn"><i class="medium material-icons">mode_edit</i>  </td>
+                  <td><a href="/addTest" th:href="@{addTest/{id}(id=${patient.id})}" class="btn"> AddTest </td>
+
+                  <td>
+                    <!-- Modal Trigger for Pop-up on click-->
+                    <a th:attr="href='#modal' + ${patient.id}" class="waves-effect waves-light btn modal-trigger">
+                      <span th:text="${patient.forename} +' ' +${patient.surname}"></span></a>
+                    <div th:attr="id = 'modal' + ${patient.id}" class="modal modal-fixed-footer">
+                      <div class="modal-content">
+                        <blockquote>
+                          <h4 th:text="${patient.forename} + ' ' + ${patient.surname}"></h4>
+                        </blockquote>
+                        <div class="row">
+                          <div class="col s8 place mt-4 p-0">
+                            <div class="col s8"><i class="material-icons"> place </i> <span
+                                th:text="${patient.address}"></span>
+                            </div>
+                          </div>
+                          <br />
+                          <br />
+                          <div class="col s8 phone mt-4 p-0">
+                            <div class="col s8"><i class="material-icons"> call </i>&nbsp;<span
+                                th:text="${patient.phone}"></span></div>
+                          </div>
+                          <br />
+                          <br />
+                          <div class="col s8 mail mt-4 p-0">
+                            <div class="col s8"><i class="material-icons"> mail_outline </i> &nbsp;<span
+                                th:text="${patient.email}"></span></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">OK</a>
+                      </div>
+                    </div>
+                  </td>
+                  <td th:text="${patient.sex}" placeholder="empty"></td>
+                  <td th:text="${patient.DOB}" placeholder="empty"></td>
+                  <td th:text="${patient.local_hospital}" placeholder="empty"></td>
+                  <td th:text="${patient.diagnosis}" placeholder="empty"></td>
+                  <td th:text="${patient.transplant}" placeholder="empty"></td>
+                  <td th:text="${patient.surgery}" placeholder="empty"></td>
+                  <td th:text="${patient.comments}" placeholder="empty"></td>
+                  <td>
+                    <a href="/sendManualReminder" th:href="@{sendManualReminder/{id}(id=${patient.id})}" class="btn"> <i class="small material-icons">email</a> </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <div th:replace="component/footer.html"></div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script th:src="@{/js/patient.js}"> </script>
+  <script th:src="@{/js/nav.js}"> </script>
+</body>
+
+</html>

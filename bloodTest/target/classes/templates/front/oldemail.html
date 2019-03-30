@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Mobile SideNav Icon DropDown -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"
+      integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Blood Test Diary</title>
+  </head>
+
+  <body>
+    <div th:replace="component/navbar.html"></div>
+
+    <ul class="sidenav" id="mobile-nav">
+      <li>
+        <a href="#home">Home</a>
+      </li>
+      <li>
+        <a href="#login">Search</a>
+      </li>
+      <li>
+        <a href="#login">Add Patient</a>
+      </li>
+      <li>
+        <a href="#Request">Send Email</a>
+      </li>
+    </ul>
+
+    <!--Section: Up coming test container and result sending container-->
+
+    <section class="section section-search grey lightnen-4 center">
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m6">
+            <!--section: Upcoming testing date-->
+            <div class="card-panel blue">
+              <h5 class="white-text text-lighten-5">Upcoming test</h5>
+              <table class="centered transparent white-text">
+                <thead>
+                  <tr>
+                    <th>Patient Number</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Testing date</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Eclair</td>
+                    <td>Main</td>
+                    <td>2017.4.3</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Alan</td>
+                    <td>Jellybean</td>
+                    <td>2019.4.3</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>2019.4.3</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!--Send Result field-->
+          <div class="col s12 m6">
+            <div class="card-panel blue">
+              <h5 class="white-text text-lighten-5">Sending result</h5>
+              <div class="input-field">
+                <input
+                  type="text"
+                  class="white black-text autocomplete"
+                  id="autocomplete-input"
+                  placeholder="Search patient name or ID"
+                />
+              </div>
+
+              <table class="transparent white-text">
+                <tr class="header">
+                  <th>ID</th>
+                  <th>Patient</th>
+                  <th>Send Result</th>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>
+                    <a
+                      class="waves-effect waves-light btn modal-trigger"
+                      href="#patientInfo1">
+                      Harry Potter
+                    </a>
+                    <!-- Modal Structure -->
+                    <div id="patientInfo1" class="modal">
+                      <div class="modal-content blue">
+                        <h4>Harry Potter</h4>
+                        <ul>
+                          <li>ID: 1</li>
+                          <li>Name: Harry</li>
+                          <li>Gender: Male</li>
+                          <li>Last blooding test date:2019.4.3</li>
+                        </ul>
+                      </div>
+                      <div class="modal-footer blue">
+                        <a
+                          href="#!"
+                          class="modal-close waves-effect waves-green btn-flat"
+                          >Close</a
+                        >
+                      </div>
+                    </div>
+                  </td>
+                  
+                  <td>
+                      <a
+                      class="waves-effect waves-light btn modal-trigger"
+                      href="#patientReport1">
+                     Generate Email
+                      <i class="material-icons right">send</i>
+                    </a>
+                    <!-- Modal Structure -->
+                    <div id="patientReport1" class="modal">
+                      <div class="modal-content blue">
+                        <h4>Harry Potter</h4>
+                        <ul>
+                          <li>ID: 1</li>
+                          <li>Name: Harry Potter</li>
+                          <li>Gender: Male</li>
+                          <li>Test Date:
+                              <input type="text" class="datepicker white-text"> 
+                          </li>
+                          <li>
+                              <form action="#">
+                                  <div class="file-field input-field">
+                                    <div class="btn">
+                                      <span>Upload Report</span>
+                                      <input type="file">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                      <input class="file-path validate" type="text">
+                                    </div>
+                                  </div>
+                                </form>
+                          </li>
+                          <li>
+                            <div class="row">
+                              <h5>Sended Emails:</h5>
+                            <div class="col s12 m4">
+                                <label>
+                                    <input type="checkbox" class="filled-in" checked="checked" />
+                                    <span >Personal Email</span>
+                                  </label>
+                            </div>
+                            <div class="col s12 m4">
+                                <label>
+                                    <input type="checkbox" class="filled-in" checked="checked" />
+                                    <span>Personal GP</span>
+                                  </label>
+                            </div>
+                          </div>
+                          <div class="input-field col s12">
+                              <input id="email" type="email" class="validate">
+                              <label for="email">Other Email</label>
+                            </div>
+                        </li>
+                        <li>Comments:
+                            <div class="row">
+                                <form class="col s12">
+                                  <div class="row">
+                                    <div class="input-field col s6">
+                                      <i class="material-icons prefix">mode_edit</i>
+                                      <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                                      <label for="icon_prefix2">Add any</label>
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                        </li>
+                        </ul>
+                      </div>
+                      <div class="modal-footer blue">
+                          <a
+                          href="#!"
+                          class="modal-close waves-effect waves-green btn-flat white-text"
+                          >Cancel</a
+                        >
+                        <a
+                          href="#!"
+                          class="modal-close waves-effect waves-green btn-flat white-text"
+                          >Send</a
+                        >
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>
+                      
+                          <a
+                            class="waves-effect waves-light btn modal-trigger"
+                            href="#patientInfo2">
+                            Jack Potatle
+                          </a>
+                          <!-- Modal Structure -->
+                          <div id="patientInfo2" class="modal">
+                            <div class="modal-content blue">
+                              <h4>Jack potatle</h4>
+                              <ul>
+                                <li>ID: 2</li>
+                                <li>Name: Jack</li>
+                                <li>Gender: Female</li>
+                                <li>Last blooding test date:2016.4.5</li>
+                              </ul>
+                            </div>
+                            <div class="modal-footer blue">
+                              <a
+                                href="#!"
+                                class="modal-close waves-effect waves-green btn-flat"
+                                >Close</a
+                              >
+                  </td>
+                  <td>
+                      <a
+                      class="waves-effect waves-light btn modal-trigger"
+                      href="#patientReport2">
+                      Generate Email
+                      <i class="material-icons right">send</i>
+                    </a>
+                    <!-- Modal Structure -->
+                    <div id="patientReport2" class="modal">
+                      <div class="modal-content blue">
+                        <h4>Jack Potatle</h4>
+                        <ul>
+                          <li>ID: 1</li>
+                          <li>Name: Jack Potatle</li>
+                          <li>Gender: Female</li>
+                          <li>Test Date:
+                              <input type="text" class="datepicker white-text"> 
+                          </li>
+                          <li>
+                              <form action="#">
+                                  <div class="file-field input-field">
+                                    <div class="btn">
+                                      <span>Upload Report</span>
+                                      <input type="file">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                      <input class="file-path validate" type="text">
+                                    </div>
+                                  </div>
+                                </form>
+                          </li>
+                          <li>
+                            <div class="row">
+                              <h5>Send Emails:</h5>
+                            <div class="col s12 m4">
+                                <label>
+                                    <input type="checkbox" class="filled-in" checked="checked" />
+                                    <span >Personal Email</span>
+                                  </label>
+                            </div>
+                            <div class="col s12 m4">
+                                <label>
+                                    <input type="checkbox" class="filled-in" checked="checked" />
+                                    <span>Personal GP</span>
+                                  </label>
+                            </div>
+                          </div>
+                          <div class="input-field col s12">
+                              <input id="email" type="email" class="validate">
+                              <label for="email">Other Email</label>
+                            </div>
+                        </li>
+                        <li>Comments:
+                            <div class="row">
+                                <form class="col s12">
+                                  <div class="row">
+                                    <div class="input-field col s6">
+                                      <i class="material-icons prefix">mode_edit</i>
+                                      <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                                      <label for="icon_prefix2">Add any</label>
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                        </li>
+                        </ul>
+                      </div>
+                      <div class="modal-footer blue">
+                          <a
+                          href="#!"
+                          class="modal-close waves-effect waves-green btn-flat white-text"
+                          >Cancel</a
+                        >
+                        <a
+                          href="#!"
+                          class="modal-close waves-effect waves-green btn-flat white-text"
+                          >Send</a
+                        >
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>   
+                      <a
+                        class="waves-effect waves-light btn modal-trigger"
+                        href="#patientInfo3">
+                        Universal Cheese
+                      </a>
+                      <!-- Modal Structure -->
+                      <div id="patientInfo3" class="modal">
+                        <div class="modal-content blue">
+                          <h4>Universal Cheese</h4>
+                          <ul>
+                            <li>ID: 2</li>
+                            <li>Name: Universal </li>
+                            <li>Gender: Cheese</li>
+                            <li>Last blooding test date:2019.6.3</li>
+                          </ul>
+                        </div>
+                        <div class="modal-footer blue">
+                          <a
+                            href="#!"
+                            class="modal-close waves-effect waves-green btn-flat"
+                            >Close</a
+                          >
+                        </td>
+                  <td>
+                      <a
+                      class="waves-effect waves-light btn modal-trigger"
+                      href="#patientReport3">
+                      Generate Email
+                      <i class="material-icons right">send</i>
+                    </a>
+                    <!-- Modal Structure -->
+                    <div id="patientReport3" class="modal">
+                      <div class="modal-content blue">
+                        <h4>Universal Cheese</h4>
+                        <ul>
+                          <li>ID: 1</li>
+                          <li>Name: Universal Cheese</li>
+                          <li>Gender: Male</li>
+                          <li>Test Date:
+                              <input type="text" class="datepicker white-text"> 
+                          </li>
+                          <li>
+                              <form action="#">
+                                  <div class="file-field input-field">
+                                    <div class="btn">
+                                      <span>Upload Report</span>
+                                      <input type="file">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                      <input class="file-path validate" type="text">
+                                    </div>
+                                  </div>
+                                </form>
+                          </li>
+                          <li>
+                            <div class="row">
+                              <h5>Sended Emails:</h5>
+                            <div class="col s12 m4">
+                                <label>
+                                    <input type="checkbox" class="filled-in" checked="checked" />
+                                    <span >Personal Email</span>
+                                  </label>
+                            </div>
+                            <div class="col s12 m4">
+                                <label>
+                                    <input type="checkbox" class="filled-in" checked="checked" />
+                                    <span>Personal GP</span>
+                                  </label>
+                            </div>
+                          </div>
+                          <div class="input-field col s12">
+                              <input id="email" type="email" class="validate">
+                              <label for="email">Other Email</label>
+                            </div>
+                        </li>
+                        <li>Comments:
+                            <div class="row">
+                                <form class="col s12">
+                                  <div class="row">
+                                    <div class="input-field col s6">
+                                      <i class="material-icons prefix">mode_edit</i>
+                                      <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                                      <label for="icon_prefix2">Add any</label>
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                        </li>
+                        </ul>
+                      </div>
+                      <div class="modal-footer blue">
+                          <a
+                          href="#!"
+                          class="modal-close waves-effect waves-green btn-flat white-text"
+                          >Cancel</a
+                        >
+                        <a
+                          href="#!"
+                          class="modal-close waves-effect waves-green btn-flat white-text"
+                          >Send</a
+                        >
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+       <!--Statistics Session-->
+       <div class="row">
+          <div class="col s12 blue white-text">
+            <ul>
+              <li> 100 patients were scheduled to attend blooding test this week</li>
+              <li> 20 patients missed test</li>
+              <li> 30 patients needed to re-schecule the test</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="section blue darken-2 white-text center">
+      <section class="section section-follow blue darken-2 white-text center">
+        <div class="container">
+          <div class="row">
+            <div class="col s12">
+              <h4>Follow NHS</h4>
+              <a href="https://www.facebook.com/NHS24/" class="white-text">
+                <i class="fab fa-facebook fa-4x"></i>
+              </a>
+              <a
+                href="https://twitter.com/NHSEngland?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                class="white-text"
+              >
+                <i class="fab fa-twitter fa-4x"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/nhsenglandldn/?hl=en"
+                class="white-text"
+              >
+                <i class="fab fa-instagram fa-4x"></i>
+              </a>
+            </div>
+          </div>
+      </section>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+    <script>
+      const sideNav = document.querySelector(".sidenav");
+      M.Sidenav.init(sideNav, {});
+
+      //Autocomplete
+      const ac = document.querySelector(".autocomplete");
+      M.Autocomplete.init(ac, {
+        data: {
+          Apple: null,
+          Microsoft: null,
+          Google: null,
+          harry: null,
+          jack: null,
+          universal: null
+        }
+      });
+      //Modal
+      $(document).ready(function() {
+        $(".modal").modal();
+      });
+
+       $(document).ready(function(){
+    $('.datepicker').datepicker();
+  });
+    </script>
+  </body>
+</html>

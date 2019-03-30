@@ -1,0 +1,110 @@
+<!-- Template Page for Adding Hospitals -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <!-- <link rel="stylesheet" href="css/main.css"> -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"
+    integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous">
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <title>Blood Test Diary</title>
+
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+</head>
+
+<body>
+
+  <div th:replace="component/navbar.html"></div>
+  <div th:replace="component/mnav.html"></div>
+
+  <!-- HOSPITAL Table -->
+  <section class="section section-login light-blue lighten-5 center">
+    <div class="row">
+
+      <div class="col s12 m6 ">
+        <div class="row">
+
+          <div class="col s12 m2">
+
+
+
+            <a href="/AddHospital" class="waves-effect blue btn-floating waves-light btn" ><i
+                class="material-icons">add</i> </a></a>
+          </div>
+          <div class="col s12 m10">
+
+            <!--Search bar of hospital table-->
+            <div class="input-field " style="background-color: transparent">
+              <input placeholder="Search By Hospital name" id="name" onkeyup="searchHospitalFunction()" type="search">
+              <i class="material-icons" style="padding: 5px">search</i>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="card blue lighten-3">
+          <table class="highlight" id="hospitalTable" width="100%">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Phone</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+              <tr th:each="hospital:${hospitals}">
+                <td><a href="/editHospital" th:href="@{editHospital/{id}(id=${hospital.id})}"
+                    class="waves-effect blue waves-light btn"> <i class="medium material-icons">mode_edit</i> </td>
+                <td th:text="${hospital.name}"></td>
+                <td th:text="${hospital.address}"></td>
+                <td th:text="${hospital.email}"></td>
+                <td th:text="${hospital.phone}"></td>
+                <!--Plot hospital location in the google map-->
+                <td><a class="waves-effect blue waves-light btn" th:data-address="${hospital.name}"
+                    onclick="buttonHelper(this.getAttribute('data-address'))">Show<i
+                      class="material-icons left">search</i></a></td>
+                <!--Point: How to pass ${hospital.address} as a parameter for buttonHelper -->
+              </tr>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col s12 m6">
+        <!--Search Bar for patient location-->
+        <div class="row">
+          <div class="col s12 m10 ">
+            <input placeholder="Search Post code or Address of patient" id="patient_location" type="text">
+          </div>
+          <div class="col s12 m2">
+            <a class="waves-effect blue waves-light btn" onclick="searchPatientLocation()"><i
+                class="material-icons">search</i></a>
+          </div>
+        </div>
+        <!--Google map form-->
+        <div id="map" style="width: 100%; height: 700px;"></div>
+      </div>
+    </div>
+
+  </section>
+
+  <div th:replace="component/footer.html"></div>
+
+  <div id="map"></div>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBh9zKIFA-ZFU8dzYetT3xPUugxj99Kauw&callback=initMap"
+    async defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script th:src="@{/js/hospital.js}"> </script>
+  <script th:src="@{/js/nav.js}"> </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+
+<!--Register page for users-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+        crossorigin="anonymous"></script>
+    <title>Blood Test Diary</title>
+</head>
+
+<body>
+        <div th:replace="component/navbar.html" ></div> 
+        <div th:replace="component/mnav.html"></div>
+
+    <section class="section white lighten-2">
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="card-panel grey lighten-3">
+                        <h5>Register</h5>
+                        <div th:if="${error != null}" th:utext="${error}" class="error">...</div>
+                        <form th:action="@{/register}" th:object="${staff}" method="POST">
+                            <div class="input-field">
+                                <input type="text" th:field="*{username}" placeholder="username"  class="validate" required/>
+                                <span th:if="${#fields.hasErrors('username')}" th:errors="*{userName}">..</span>
+                            </div>
+                            <div class="input-field">
+                                <input id ="password" type="password" th:field="*{password}"  placeholder="Password"  class="validate" required/>
+                            </div>
+                            <div class="input-field">
+                                <input id = "confirm_password"  data-error="Password not match" type="password" placeholder="confirm password" class="validate" required/>
+                            </div>
+                            <div class="input-field">
+                                <input id="email" type="email" th:field="*{email}" placeholder="Email" class="validate"/>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" placeholder="Phone">
+                            </div>
+                            <div class="input-field">
+                                <input type="text" th:field="*{forename}" placeholder="forename"/>
+                                <span th:if="${#fields.hasErrors('forename')}" th:errors="*{forename}">..</span>
+                            </div>
+                            <div class="input-field">
+                                <input  type="text" th:field="*{surname}" placeholder="surname"/>
+                                <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">..</span>
+                            </div>
+                            <input type="submit" value="Register" class=" waves-light btn blue waves-effect">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <div th:replace="component/footer.html"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script th:src="@{/js/nav.js}"> </script>
+    <script th:src="@{/js/register.js}"> </script>
+</body>
+
+</html>
