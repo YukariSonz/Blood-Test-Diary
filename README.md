@@ -1,5 +1,5 @@
 ## TEAM Lyrebird 
-# Major Project Project 1: Blood Test Diary
+# Major Project: Blood Test Diary
 This is the major project for software engineering at King's College London developed by Teaam Lyrebird
 
 
