@@ -20,6 +20,9 @@ Patrick Whyte
 - HTML/CSS
 - JAVA
 
+### Extra stuff required
+- A outlook email (Config at application.properties)
+- Google Map API key (Config at hospitals.html)
 ### How to Setup the Project 
  
 - Setup Mysql server, load bloodtestdiary.sql from “bloodTest/src/main/rescources”, in the application.properties, change the mysql information according to the server setup. - Install maven, go into the bloodTest directory, run “mvn clean package” - Using command line, inside the “bloodTest/target”, run “java -jar Lyrebird-0.0.1-SNAPSHOT.java” command line - On any browser(prefer chrome), go to ​http://localhost:8080​, default username is “user” with password “password” 
