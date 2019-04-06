@@ -3,7 +3,7 @@
 The source code is released under a GNU General Public License (GPL), and it's delivered to customer under this free software license.
 
 # Major Project: Blood Test Diary
-This is the major project for software engineering at King's College London developed by Teaam Lyrebird
+This is the major project for software engineering (Year 2 5CCS2SEG) at King's College London developed by Teaam Lyrebird
 
 
 ### Contributors
