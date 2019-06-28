@@ -5,6 +5,7 @@ The source code is released under a GNU General Public License (GPL), and it's d
 # Major Project: Blood Test Diary
 This is the major project for software engineering (Year 2 5CCS2SEG) at King's College London developed by Teaam Lyrebird
 
+## Duration: 10 weeks (Second semester at Undergraduate Second Year)
 
 ### Contributors
 - Bonian Hu 
